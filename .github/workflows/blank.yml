@@ -13,6 +13,8 @@ on:
 
 env:
   SSH_ACTIONS: true
+  REPO_URL: https://github.com/filebrowser/filebrowser
+  REPO_BRANCH: master
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,6 +31,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+
+      # Runs
+      - name: Run a one-line script
+        run: |
+          apt-get install golang-go -y
+          git clone --depth=1 $REPO_URL
 
       - name: SSH to GitHub Actions
         uses: P3TERX/ssh2actions@v1.0.0
